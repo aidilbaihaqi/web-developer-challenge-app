@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Login
+Route::get('/login', [AppController::class, 'login'])->name('login');
 // Dashboard
 Route::get('/dashboard', [AppController::class, 'index'])->name('dashboard');
