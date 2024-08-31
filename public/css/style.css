@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e1ecf4;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #004c70;
+  color: white;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-menu {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu > li {
+  margin-bottom: 10px;
+}
+
+.menu > li > a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.submenu {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.submenu > li > a {
+  color: #c5d9e5;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  position: relative;
+}
+
+.user-profile {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.main-content {
+  text-align: center;
+  margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      width: 60px;
+  }
+
+  .hamburger-menu {
+      display: block;
+  }
+
+  .menu > li > a {
+      padding: 5px;
+      font-size: 14px;
+  }
+
+  .user-profile {
+      position: relative;
+      top: auto;
+      right: auto;
+  }
+  
+  .title {
+    font-size: 12px;
+    
+  }
+}
