@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 class AppController extends Controller
 {
     // Login
+    public function login() {
+        return view('login', [
+            'title' => 'Login'
+        ]);
+    }
 
     // Dashboard
     public function index() {
