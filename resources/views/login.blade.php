@@ -10,11 +10,21 @@
                 <h1 class="text-xl font-bold leading-tight text-centers tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Gas Login!
                 </h1>
-                <form class="space-y-4 md:space-y-6" action="" method="POST">
+
+                @if($errors->any())
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    @foreach ($errors->all() as $error)
+                    <span class="font-medium">Login Gagal!</span> {{ $error }}
+                    @endforeach
+                    
+                  </div>
+                @endif
+
+                <form class="space-y-4 md:space-y-6" action="{{ route('login') }}" method="POST">
                   @csrf
                     <div>
-                        <label for="userToken" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Token</label>
-                        <input type="text" name="userToken" id="userToken" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
+                        <label for="userID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User ID</label>
+                        <input type="text" name="userID" id="userID" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                     </div>
                     <div>
                         <label for="pwd" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
