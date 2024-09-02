@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class AppController extends Controller
 {
@@ -30,20 +31,29 @@ class AppController extends Controller
         if($response->successful()) {
             $data = $response->json();
 
-            // session(['token' => $data['token']]);
-
-            session()->flash('success', 'Login berhasil');
+            Session::put('userName', $data['userName']);
+            Session::put('userPhoto', $data['userPhoto']);
+            Session::put('userToken', $data['userToken']);
+            Session::put('login', TRUE);
 
             return redirect()->route('dashboard');
         }else {
-            return back()->withErrors(['userID' => 'Periksa kembali user ID dan password anda']);
+            return back()->with(['alert' => 'Periksa kembali user ID dan password anda']);
         }
+    }
+    public function logout() {
+        Session::flush();
+        return redirect()->route('viewlogin')->with('alert', 'Anda telah logout!');
     }
 
     // Dashboard
     public function index() {
-        return view('dashboard', [
-            'title' => 'Dashboard'
-        ]);
+        if(!Session::get('login')) {
+            return redirect()->route('viewlogin')->with('alert', 'Ada kesalahan!');
+        }else {
+            return view('dashboard', [
+                'title' => 'Dashboard'
+            ]);
+        }
     }
 }
