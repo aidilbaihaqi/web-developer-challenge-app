@@ -30,10 +30,12 @@ class AppController extends Controller
 
         if($response->successful()) {
             $data = $response->json();
+            $hakAkses = collect($data['userRights']);
 
             Session::put('userName', $data['userName']);
             Session::put('userPhoto', $data['userPhoto']);
             Session::put('userToken', $data['userToken']);
+            Session::put('userRights', $hakAkses);
             Session::put('login', TRUE);
 
             return redirect()->route('dashboard');
@@ -49,7 +51,7 @@ class AppController extends Controller
     // Dashboard
     public function index() {
         if(!Session::get('login')) {
-            return redirect()->route('viewlogin')->with('alert', 'Ada kesalahan!');
+            return redirect()->route('viewlogin')->with('alert', 'Login terlebih dahulu');
         }else {
             return view('dashboard', [
                 'title' => 'Dashboard'

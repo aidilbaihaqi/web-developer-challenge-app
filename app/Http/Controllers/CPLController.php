@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class CPLController extends Controller
 {
     public function index() {
         $response = Http::withHeaders([
-            'Authorization' => 'contohABC'
+            'Authorization' => Session::get('userToken')
         ])->post('http://127.0.0.1:9871/api/listCPL', [
             'cpl' => 'list'
         ]);
@@ -29,7 +30,7 @@ class CPLController extends Controller
         ]);
 
         $response = Http::withHeaders([
-            'Authorization' => 'contohABC'
+            'Authorization' => Session::get('userToken')
         ])->post('http://127.0.0.1:9871/api/addCPL', [
             'kodecpl' => $request->kodecpl,
             'deskripsi' => $request->deskripsi
@@ -37,23 +38,6 @@ class CPLController extends Controller
 
         if($response->successful()) {
             return redirect()->route('cpl.index')->with(['success' => 'Data berhasil ditambahkan']);
-        }
-    }
-    public function destroy(Request $request) {
-        $request->validate([
-            'kodecpl' => 'required'
-        ]);
-
-        $response = Http::withHeaders([
-            'Authorization' => 'contohABC'
-        ])->post('http://127.0.0.1:9871/api/removeCPL', [
-            'kodecpl' => $request->kodecpl
-        ]);
-
-        if($response->successful()) {
-            return redirect()->route('cpl.index')->with(['success' => 'Data berhasil dihapus']);
-        }else {
-            return 'gagal';
         }
     }
 }

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CPMKController extends Controller
 {
     public function index() {
         $response = Http::withHeaders([
-            'Authorization' => 'contohABC'
+            'Authorization' => Session::get('userToken')
         ])->post('http://127.0.0.1:9871/api/listCPMK', [
             'cpmk' => 'list'
         ]);
@@ -30,7 +31,7 @@ class CPMKController extends Controller
         ]);
 
         $response = Http::withHeaders([
-            'Authorization' => 'contohABC'
+            'Authorization' => Session::get('userToken')
         ])->post('http://127.0.0.1:9871/api/addCPMK', [
             'kodecpmk' => $request->kodecpmk,
             'kodecpl' => $request->kodecpl,
