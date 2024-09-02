@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Login
 Route::get('/login', [AppController::class, 'viewlogin'])->name('viewlogin');
 Route::post('/login', [AppController::class, 'login'])->name('login');
+Route::get('/logout', [AppController::class, 'logout'])->name('logout');
 
 // Dashboard
 Route::get('/dashboard', [AppController::class, 'index'])->name('dashboard');
