@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CPLController;
+use App\Http\Controllers\CPMKController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,14 @@ Route::get('/dashboard', [AppController::class, 'index'])->name('dashboard');
 Route::controller(CPLController::class)->group(function () {
   Route::get('/cpl', 'index')->name('cpl.index');
   Route::post('/cpl', 'store')->name('cpl.store');
-  Route::delete('/cpl/{kodecpl}', 'destroy')->name('cpl.destroy');
+  // Route::delete('/cpl/{kodecpl}', 'destroy')->name('cpl.destroy');
 });
+
+// CPMK
+Route::controller(CPMKController::class)->group(function () {
+  Route::get('/cpmk', 'index')->name('cpmk.index');
+  Route::post('/cpmk', 'store')->name('cpmk.store');
+  // Route::delete('/cpl/{kodecpl}', 'destroy')->name('cpl.destroy');
+});
+
+

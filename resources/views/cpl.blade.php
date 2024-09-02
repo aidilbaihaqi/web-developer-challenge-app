@@ -41,11 +41,8 @@
                     <td class="border px-4 py-2">{{ $item['deskripsi'] }}</td>
                     <td class="border px-4 py-2">
                         <a href="" class="text-blue-500">Edit</a>
-                        <form action="{{ route('cpl.destroy', $item['kodecpl']) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500">Hapus</button>
-                        </form>
+                        <a href="" class="text-red-500">Hapus</a>
+                        
                     </td>
                 </tr>   
               @endforeach
