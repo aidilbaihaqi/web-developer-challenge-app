@@ -22,4 +22,38 @@ class CPLController extends Controller
             ]);
         }
     }
+    public function store(Request $request) {
+        $request->validate([
+            'kodecpl' => 'required',
+            'deskripsi' => 'required'
+        ]);
+
+        $response = Http::withHeaders([
+            'Authorization' => 'contohABC'
+        ])->post('http://127.0.0.1:9871/api/addCPL', [
+            'kodecpl' => $request->kodecpl,
+            'deskripsi' => $request->deskripsi
+        ]);
+
+        if($response->successful()) {
+            return redirect()->route('cpl.index')->with(['success' => 'Data berhasil ditambahkan']);
+        }
+    }
+    public function destroy(Request $request) {
+        $request->validate([
+            'kodecpl' => 'required'
+        ]);
+
+        $response = Http::withHeaders([
+            'Authorization' => 'contohABC'
+        ])->post('http://127.0.0.1:9871/api/removeCPL', [
+            'kodecpl' => $request->kodecpl
+        ]);
+
+        if($response->successful()) {
+            return redirect()->route('cpl.index')->with(['success' => 'Data berhasil dihapus']);
+        }else {
+            return 'gagal';
+        }
+    }
 }
