@@ -42,7 +42,7 @@
           </button>
           <ul id="dropdown-example" class="hidden py-2 space-y-2">
                 <li>
-                    <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CPL</a>
+                    <button onclick="openCplWindow()" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CPL</button>
                 </li>
                 <li>
                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CPMK</a>
@@ -71,3 +71,9 @@
     </ul>
   </div>
 </aside>
+
+<script>
+  function openCplWindow() {
+      window.open("{{ route('cpl.index') }}", "_blank", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600");
+  }
+  </script>

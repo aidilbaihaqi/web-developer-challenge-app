@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\CPLController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,8 @@ Route::post('/login', [AppController::class, 'login'])->name('login');
 
 // Dashboard
 Route::get('/dashboard', [AppController::class, 'index'])->name('dashboard');
+
+// CPL
+Route::controller(CPLController::class)->group(function () {
+  Route::get('/cpl', 'index')->name('cpl.index');
+});
