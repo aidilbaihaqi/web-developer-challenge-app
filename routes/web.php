@@ -25,4 +25,6 @@ Route::get('/dashboard', [AppController::class, 'index'])->name('dashboard');
 // CPL
 Route::controller(CPLController::class)->group(function () {
   Route::get('/cpl', 'index')->name('cpl.index');
+  Route::post('/cpl', 'store')->name('cpl.store');
+  Route::delete('/cpl/{kodecpl}', 'destroy')->name('cpl.destroy');
 });
