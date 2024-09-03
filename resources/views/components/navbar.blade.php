@@ -8,11 +8,11 @@
   <div class="flex-1 p-6">
     <div class="flex justify-end items-center mb-4">
       <div class="flex items-center space-x-2">
-        <img src="{{ asset('storage/asset/photo.png') }}" alt="User Photo" class="w-10 h-10 rounded-full">
+        <img src="{{ asset('storage/asset/'.base64_decode(Session::get('userPhoto'))) }}" alt="User Photo" class="w-10 h-10 rounded-full">
         <span class="font-semibold">{{ Session::get('userName') }}</span>
       </div>
     </div>
-    <div class="text-center flex">
+    <div class="text-center">
       <h1 class="text-3xl font-bold">Welcome to FTTK UMRAH 2024</h1>
     </div>
   </div>
