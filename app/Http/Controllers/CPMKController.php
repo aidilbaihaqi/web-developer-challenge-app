@@ -15,11 +15,19 @@ class CPMKController extends Controller
             'cpmk' => 'list'
         ]);
 
+        $kodecpl = Http::withHeaders([
+            'Authorization' => Session::get('userToken')
+        ])->post('http://127.0.0.1:9871/api/listCPL', [
+            'cpl' => 'list'
+        ]);
+
         if($response->successful()) {
             $data = $response->json();
+            $listKodeCPL = $kodecpl->json();
             return view('cpmk', [
                 'title' => 'Data CPMK',
-                'data' => $data
+                'data' => $data,
+                'kodecpl' => $listKodeCPL
             ]);
         }
     }
@@ -29,7 +37,7 @@ class CPMKController extends Controller
             'kodecpl' => 'required',
             'deskripsi' => 'required'
         ]);
-
+        
         $response = Http::withHeaders([
             'Authorization' => Session::get('userToken')
         ])->post('http://127.0.0.1:9871/api/addCPMK', [
