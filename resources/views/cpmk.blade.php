@@ -70,7 +70,7 @@
                         <td class="px-6 py-4">
                             {{ $item['deskripsi'] }}
                         </td>
-                        @if (Session::get('userRights')->contains('editCPMK'))
+                        @if (Session::get('userRights')->contains('editCPL'))
                         <td class="px-6 py-4 text-right">
                             <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</a>
