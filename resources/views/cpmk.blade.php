@@ -87,7 +87,12 @@
                             <input type="text" name="kodecpmk" id="kodecpmk">
                         </td>
                         <td class="border px-4 py-2">
-                            <input type="text" name="kodecpl" id="kodecpl">
+                            <select name="kodecpl" id="states" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-e-lg border-s-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>Pilih Kode CPL</option>
+                                @foreach ($kodecpl['cpl'] as $item)
+                                    <option value="{{ $item['kodecpl'] }}">{{ $item['kodecpl'] }}</option>
+                                @endforeach
+                            </select>
                         </td>
                         <td class="border px-4 py-2">
                             <input type="text" name="deskripsi" id="deskripsi">
